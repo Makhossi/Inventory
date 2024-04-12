@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="card">
+      <h1>Login</h1>
+      <form>
+        <div class="form-group">
+          <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="email">
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="password">
+        </div>
+        <button (click)="login()">LOGIN</button>
+      </form>
+      <p>Don't have an account? <a routerLink="/sign-up">sign-up</a></p>
+      <p><a routerLink="/reset">reset</a></p>
+    </div>
+  </div>
+</ion-content>
+ 

@@ -1,0 +1,171 @@
+/* General Styles */
+ion-content {
+  --ion-background-color: var(--ion-color-light);
+  --animate-duration: 0.4s;
+}
+
+ion-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeIn var(--animate-duration) ease-in-out;
+}
+
+ion-card-header {
+  background-color:#c24d2c;
+  color: var(--ion-color-light);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ion-item {
+  --background: transparent;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+ion-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+ion-label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+ion-input,
+ion-textarea {
+  font-size: 16px;
+  color: var(--ion-color-dark);
+}
+
+.custom-file-input {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #c24d2c;
+  color: var(--ion-color-light);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 30px;
+width: 100%;
+}
+
+.custom-file-input:hover {
+  background-color: var(--ion-color-primary-shade);
+}
+
+.custom-file-input ion-icon {
+  margin-right: 5px;
+}
+
+ion-button {
+  --background: #c24d2c;
+  --color: var(--ion-color-light);
+  --border-radius: 20px;
+  --box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 10px;
+}
+
+ion-button:hover {
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --ion-background-color: var(--ion-color-dark);
+  }
+
+  ion-item {
+    --background: var(--ion-color-dark);
+    color: var(--ion-color-light);
+  }
+
+  ion-input,
+  ion-textarea {
+    color: var(--ion-color-light);
+  }
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  ion-card-header {
+    font-size: 16px;
+  }
+
+  ion-label {
+    font-size: 14px;
+  }
+
+  ion-input,
+  ion-textarea {
+    font-size: 14px;
+  }
+
+  .custom-file-input {
+    font-size: 14px;
+  }
+}
+
+
+/* Date and Time Pickers */
+ion-datetime {
+  --background: transparent;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+ion-datetime:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+ion-datetime .datetime-text {
+  font-size: 16px;
+  color: var(--ion-color-dark);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  ion-datetime .datetime-text {
+    color: var(--ion-color-light);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  ion-datetime .datetime-text {
+    font-size: 14px;
+  }
+}
+
+
+ion-header {
+  ion-toolbar {
+    --background: #c24d2c; 
+    color:#fff;
+  }
+}

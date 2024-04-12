@@ -1,0 +1,110 @@
+/* General styles */
+ion-content {
+  --ion-background-color: var(--ion-color-light);
+}
+
+ion-list {
+  background-color: transparent;
+  padding: 20px;
+}
+
+ion-item {
+  --background: var(--ion-color-light);
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+ion-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+ion-label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+ion-input,
+ion-select {
+  font-size: 16px;
+  color: var(--ion-color-dark);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --ion-background-color: var(--ion-color-dark);
+  }
+
+  ion-item {
+    --background: var(--ion-color-dark);
+    color: var(--ion-color-light);
+  }
+
+  ion-input,
+  ion-select {
+    color: var(--ion-color-light);
+  }
+}
+
+/* Button styles */
+ion-button {
+  --background: #c24d2c; 
+  --color: var(--ion-color-light);
+  --border-radius: 20px;
+  --box-shadow: none;
+  transition: all 0.3s ease-in-out;
+}
+
+ion-button:hover {
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Link styles */
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  color: #c24d2c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Animation styles */
+ion-item,
+ion-button {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  ion-list {
+    padding: 10px;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #c24d2c; 
+    color:#fff;
+  }
+}

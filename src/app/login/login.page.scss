@@ -1,0 +1,115 @@
+/* General styles */
+ion-content {
+  --ion-background-color: var(--ion-color-light);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  background-color: var(--ion-color-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --ion-background-color: var(--ion-color-dark);
+  }
+
+  .card {
+    background-color: var(--ion-color-dark);
+    color: var(--ion-color-light);
+  }
+}
+
+/* Form styles */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #c24d2c;
+  color: var(--ion-color-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--ion-color-primary-shade);
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  color: #c24d2c;
+  text-decoration: none;
+
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Animation styles */
+.card {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .card {
+    padding: 10px;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #c24d2c; 
+    color:#fff;
+  }
+}

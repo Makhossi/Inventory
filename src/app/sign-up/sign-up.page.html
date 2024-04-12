@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select Role</ion-label>
+      <ion-select [(ngModel)]="selectedRole">
+        <ion-select-option value="Manager">Manager</ion-select-option>
+        <ion-select-option value="Delivery">Delivery</ion-select-option>
+        <ion-select-option value="picker">Picker</ion-select-option> 
+      </ion-select>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="confirm_password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="Register()">Sign Up</ion-button>
+  </div>
+
+  <p>Already have an account? <a routerLink="/login">sign-up</a></p>
+      <p>........................<a routerLink="/reset">reset</a></p>
+</ion-content>

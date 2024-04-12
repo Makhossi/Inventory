@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-uppercase">User Profiles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment value="custom">
+    <ion-segment-button value="custom">
+      <ion-label>UserProfiles</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="segment" routerLink="/analytics">
+      <ion-label>Analytics </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let user of users | async" class="user-item animate__animated animate__fadeInUp">
+      <ion-avatar slot="start">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ user.name }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <p>Role: {{ user.role }}</p>
+        <p [ngClass]="{'active': user.status === 'active', 'denied': user.status === 'denied', 'pending': user.status === 'pending'}">Status: {{ user.status }}</p>
+      </ion-label>
+      <ion-button (click)="approveUser(user)" color="success" fill="outline" class="animate__animated animate__bounceIn">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Approve
+      </ion-button>
+      <ion-button (click)="declineUser(user)" color="danger" fill="outline" class="animate__animated animate__bounceIn">
+        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+        Decline
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

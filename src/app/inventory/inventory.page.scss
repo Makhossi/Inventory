@@ -1,0 +1,113 @@
+/* Global Styles */
+ion-content {
+    --background: #f7f7f7;
+  }
+  
+  /* Header Styles */
+  ion-header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+  }
+  
+  ion-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  ion-badge {
+    font-weight: bold;
+  }
+  
+  /* List Styles */
+  ion-list {
+    padding: 16px;
+  }
+  
+  ion-item {
+    --background: #fff;
+    --border-radius: 8px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  ion-thumbnail {
+    --size: 80px;
+    --border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  ion-thumbnail img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  ion-label {
+    margin-left: 16px;
+  }
+  
+  ion-label h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  ion-label p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+  
+  /* Quantity Selector Styles */
+  ion-row.quantity-selector {
+    --ion-grid-column-padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ion-col.quantity-selector {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-button.quantity-button {
+    --background: #f7f7f7;
+    --color: #333;
+    --border-radius: 4px;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .quantity-value {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0 8px;
+  }
+  
+  /* Add to Cart Button Styles */
+  .add-to-cart-button {
+    --background: #ff6b6b;
+    --color: #fff;
+    --border-radius: 20px;
+    font-weight: bold;
+    font-size:11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  
+  .add-to-cart-button .button-text {
+    margin-left: 12px;
+  }

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment color="success" value="all">
+      <ion-segment-button value="all">
+        <ion-label>Analytics</ion-label>
+      </ion-segment-button>
+      <ion-segment-button routerLink="/delivery" value="favorites">
+        <ion-label>Invoice Slip</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-icon routerLink="/home" slot="end" name="arrow-back-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="scroll-container">
+    <p class="pp">STORE INVENTORY</p>
+    <div class="chart-container">
+      
+      <br>
+      <canvas id="quantityByCategoryChart"></canvas>
+    </div>
+ <br>
+ <br>
+ <p class="pp">STOREROOM INVENTORY</p>
+    <div class="chart-container">
+     
+      <br>
+      <canvas id="quantityByCategoryStorommChart"></canvas>
+    </div>
+    <br>
+    <br>
+    
+      <p class="pp">TOTAL CATEGORY COMPARISON ON BOTH STORE AND STOREROOM</p>
+    
+      <canvas id="categoryComparisonChart"></canvas>
+
+
+     <br>
+     <br>
+<p class="pp">TOTAL PRODUCT QUANTITIES </p>
+<canvas id="totalQuantitiesChart"></canvas>
+
+<br>
+<br>
+<p class="pp">BEST PERFOMING PRODUCT</p>
+<canvas id="updateFrequencyChart"></canvas>
+  </div>
+</ion-content>

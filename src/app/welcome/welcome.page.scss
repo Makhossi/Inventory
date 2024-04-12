@@ -1,0 +1,68 @@
+ion-content {
+    --background: #c24d2c; /* Set your desired background color */
+  }
+  
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+  
+    .header {
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    h2 {
+      font-size: 36px;
+      margin-top: 10px;
+      animation: slideIn 2s ease-in-out;
+    }
+  
+    .animation-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  
+    .school-icon {
+      font-size: 60px;
+      color: #ffffff; /* Set your desired icon color */
+      animation: rotate 2s linear infinite;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

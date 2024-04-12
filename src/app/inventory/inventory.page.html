@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inventory</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="primary">{{ cartItemCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inventory</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let item of inventory">
+      <ion-thumbnail slot="start">
+        <img [src]="item.imageUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.category }}</p>
+        <p>{{ item.description }}</p>
+      </ion-label>
+      <ion-row class="ion-align-items-center">
+        <ion-row class="ion-align-items-center quantity-selector">
+          <ion-col size="4" class="quantity-selector">
+            <ion-button fill="clear" class="quantity-button" (click)="decrementQuantity(item)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="ion-text-center quantity-selector">
+            <span class="quantity-value">{{ item.quantity }}</span>
+          </ion-col>
+          <ion-col size="4" class="quantity-selector">
+            <ion-button fill="clear" class="quantity-button" (click)="incrementQuantity(item)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-col size="6">
+          <ion-button fill="outline" expand="block" (click)="toggleCartItem(item)" class="add-to-cart-button">
+            <ion-icon [name]="item.inCart ? 'cart' : 'cart-outline'" slot="start"></ion-icon>
+            <span class="button-text">{{ item.inCart ? 'Remove from Cart' : 'Add to Cart' }}</span>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>

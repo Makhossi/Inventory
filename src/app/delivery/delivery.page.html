@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment color="success" value="favorites">
+      <ion-segment-button routerLink="/analytics" value="all">
+        <ion-label>Analytics</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        <ion-label>Invoice Slip</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let slip of slips">
+      <ion-card *ngFor="let item of slip.items">
+        <ion-card-header class="card-header">
+          <ion-card-title>{{ item.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="item-details">Quantity: {{ item.quantity }}</p>
+          <p class="item-details">Category: {{ item.category }}</p>
+          <p class="item-details">Barcode: {{ item.barcode }}</p>
+          <p class="item-details">Description: {{ item.description }}</p>
+          <p class="item-details">Date of Pickup: {{ item.dateOfPickup }}</p>
+          <p class="item-details">Time of Pickup: {{ item.timeOfPickup }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

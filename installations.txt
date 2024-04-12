@@ -1,0 +1,5 @@
+1. @capacitor-community/barcode-scanner
+2. npm install @capacitor/camera  
+3. npm install @ionic/pwa-elements
+4. npm install chart.js
+5. npm install pdfmake

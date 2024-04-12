@@ -1,0 +1,61 @@
+
+    ion-toolbar {
+      --background: #c24d2c; 
+      color:#fff;
+      text-align: center;
+    }
+
+  ion-segment {
+    --background: #c24d2c;
+    font-weight: bold;
+  }
+
+ /* General Styles */
+ion-content {
+    --background: #f7f7f7;
+    --ion-font-family: 'Poppins', sans-serif;
+  }
+  
+
+  /* Inventory Item Styles */
+  .inventory-item {
+    margin-bottom: 20px;
+  }
+  
+  .animated-header {
+    background-color: #c24d2c;
+    color: #fff;
+    animation: pulse 2s infinite;
+  }
+  
+  .animated-content {
+    background-color: #f5f5f5;
+    animation: fadeIn 1s;
+  }
+  
+  .thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 10px;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
