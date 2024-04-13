@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Best Brightness Dashboard
+      Best Brightness 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" style="--background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/v.jpg') no-repeat center / cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
+<!-- <ion-content class="ion-padding" style="--background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/v.jpg') no-repeat center / cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
+ 
+  
+ 
   <ion-segment value="custom">
     <ion-segment-button value="custom">
       <ion-label>Menu</ion-label>
@@ -50,4 +53,47 @@
 
     
   </div>
+</ion-content> -->
+
+
+
+<!-- <ion-segment value="custom">
+  <ion-segment-button value="custom">
+    <ion-label>Menu</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="segment" (click)="navigateToStoreInventory()">
+    <ion-label>Store </ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="storeroom" (click)="navigateToViewStoreRoom()">
+    <ion-label>StoreRoom</ion-label>
+  </ion-segment-button>
+</ion-segment> -->
+
+
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="add-inventory" (click)="navigateToPickupInventory()">
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label>Add Inventory</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="update-inventory" (click)="navigateToUpdateInventory()">
+        <ion-icon name="create-outline"></ion-icon>
+        <ion-label>Update Inventory</ion-label>
+      </ion-tab-button>      
+
+      <ion-tab-button tab="pickup-inventory"  (click)="navigateToPickupInventory()">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-label>Add Inventory Storeroom</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="analytics" (click)="navigateToDeliverInventory()">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <ion-label>Analytics</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
