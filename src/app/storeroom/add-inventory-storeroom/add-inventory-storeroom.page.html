@@ -46,8 +46,20 @@
         <ion-input type="number" [(ngModel)]="itemQuantity"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Picker's Details</ion-label>
+        <ion-label position="floating">Picker Name</ion-label>
         <ion-input type="text" [(ngModel)]="pickersDetails"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Picker Email</ion-label>
+        <ion-input type="text" [(ngModel)]="pickersDetailsEmail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Phone number</ion-label>
+        <ion-input type="text" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cumpany</ion-label>
+        <ion-input type="text" [(ngModel)]="Cumpany"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="fixed">Date of Pickup</ion-label>
@@ -61,10 +73,7 @@
       <ion-button  expand="block" id="fileInput" color="medium" class="custom-file-input" (click)="takePicture()">
         <ion-icon name="camera"></ion-icon>
         Take Picture
-      </ion-button >
-
-
-
+      </ion-button>
       <ion-button expand="block" (click)="addItem()">Add Item</ion-button>
       <ion-button expand="block" (click)="generateSlip()">DONE</ion-button>
     </ion-card-content>

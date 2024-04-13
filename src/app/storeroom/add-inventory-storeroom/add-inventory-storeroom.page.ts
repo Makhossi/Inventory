@@ -28,7 +28,11 @@ export class AddInventoryStoreroomPage implements OnInit {
   imageUrl: string | null = null;
   cart: any[] = []; 
   toggleChecked: boolean = false; 
-
+  currentDate: Date;
+  currentTime: string;
+  phone:any;
+  Cumpany:any;
+  pickersDetailsEmail:any;
 
 
 
@@ -38,9 +42,15 @@ export class AddInventoryStoreroomPage implements OnInit {
     private loadingController: LoadingController,
    private  ToastController: ToastController,  private alertController: AlertController,
   
-  ) {}
+  ) {
+    this.currentDate = new Date();
+    this.currentTime = this.currentDate.toLocaleTimeString("en-US", {
+      hour12: false,
+    });
+  }
 
   ngOnInit() {
+    document.querySelector('body')?.classList.remove('scanner-active'); 
   }
   async takePicture() {
     const image = await Camera.getPhoto({
@@ -69,7 +79,7 @@ export class AddInventoryStoreroomPage implements OnInit {
   
     // make background of WebView transparent
     // note: if you are using ionic this might not be enough, check below
-    BarcodeScanner.hideBackground();
+   // BarcodeScanner.hideBackground();
     
     const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
   
@@ -84,6 +94,9 @@ export class AddInventoryStoreroomPage implements OnInit {
   toggleMode() {
     if (this.toggleChecked) {
       this.barcode = ''; // Clear the barcode value when switching to input mode
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
+      document.querySelector('body')?.classList.remove('scanner-active'); 
     }
   }
   
@@ -91,6 +104,10 @@ export class AddInventoryStoreroomPage implements OnInit {
 
 
   async addItem() {
+
+    this.checkBookingDateTime(this.currentDate,this.currentTime);
+
+
     const loader = await this.loadingController.create({
       message: 'Adding Inventory...',
     });
@@ -112,10 +129,14 @@ export class AddInventoryStoreroomPage implements OnInit {
         timeOfPickup: this.timeOfPickup,
         barcode: this.barcode || '',
         timestamp: new Date(),
-        location:"storeroom"
+        location:"storeroom",
+        pickersDetailsEmail:this.pickersDetailsEmail,
+        phone :this.phone,
+        Cumpany:this.Cumpany
       };
       this.cart.push(newItem);
-      this.presentToast('Item added to cart');
+      console.log(this.cart);
+      this.presentToast('Item added to cart','success');
       await this.firestore.collection('storeroomInventory').add(newItem);
       this.clearFields();
     } catch (error) {
@@ -131,7 +152,7 @@ export class AddInventoryStoreroomPage implements OnInit {
       message: 'Generating Slip...',
     });
     await loader.present();
-  
+  console.log("data",this.cart)
     try {
       // Create a slip document in Firestore
       const slipData = {
@@ -146,6 +167,9 @@ export class AddInventoryStoreroomPage implements OnInit {
           dateOfPickup: item.dateOfPickup,
           timeOfPickup: item.timeOfPickup,
           barcode: item.barcode,
+          pickersDetailsEmail:this.pickersDetailsEmail,
+          phone :this.phone,
+          Cumpany:this.Cumpany
         })),
       };
       await this.firestore.collection('slips').add(slipData);
@@ -173,7 +197,7 @@ const docDefinition = {
       {
           table: {
               headerRows: 1,
-              widths: [ '*', '*', '*', '*', '*', '*' ],
+              widths: [ 76, 76,76,76,76,76 ],
               body: [
                   [
                       { text: 'Name', style: 'tableHeader' },
@@ -235,7 +259,7 @@ const docDefinition = {
       this.cart = [];
   
       // Show success toast notification
-      this.presentToast('Slip generated successfully');
+      this.presentToast('Slip generated successfully',"success");
     } catch (error) {
       console.error('Error generating slip:', error);
       // Handle error
@@ -262,11 +286,30 @@ clearFields() {
 }
 
 
-async presentToast(message: string) {
+checkBookingDateTime(date: any, startTime: any): void {
+  // Check if the date is in the past
+  if (date >= this.currentDate.toISOString().split("T")[0]) {
+    this.presentToast("date must be behind or must be current date.","warning");
+    return;
+  }
+
+  if (!this.imageBase64){
+    this.presentToast("Capture the image of the product","warning");
+    return;
+  }
+
+  // Check if the time is in the past
+}
+
+
+
+
+async presentToast(message: string,color:string) {
   const toast = await this.ToastController.create({
     message: message,
-    duration: 2000,
-    position: 'top'
+    duration: 4000,
+    position: 'middle',
+    color:color
   });
   toast.present();
 }

@@ -55,6 +55,10 @@ export class HomePage {
                 authorized = this.userDocument.role === 'picker' || this.userDocument.role === 'Manager';
                 message = authorized ? 'Authorized user for picker page.' : 'Unauthorized user for picker page.';
                 break;
+            case 'user-profiles':
+                authorized = this.userDocument.role === 'Manager';
+                message = authorized ? 'Authorized user for picker page.' : 'Unauthorized user for picker page.';
+                break;
             case 'analytics':
                 authorized = this.userDocument.role === 'Deliver' || this.userDocument.role === 'Manager';
                 message = authorized ? 'Authorized user for delivery page.' : 'Unauthorized user for delivery page.';
@@ -99,13 +103,17 @@ export class HomePage {
     }
   }
 
+  navigateToUserProfiles(): Promise<void> {
+    return this.navigateBasedOnRole('user-profiles');
+  }
+
   navigateToAddInventory(): Promise<void> {
     return this.navigateBasedOnRole('add-inventory');
   }
 
-  navigateToUpdateInventory(): Promise<void> {
-    return this.navigateBasedOnRole('view');
-  }
+  // navigateToUpdateInventory(): Promise<void> {
+  //   return this.navigateBasedOnRole('view');
+  // }
 
   navigateToPickupInventory(): Promise<void> {
     return this.navigateBasedOnRole('add-inventory-storeroom');

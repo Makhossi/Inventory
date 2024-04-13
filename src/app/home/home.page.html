@@ -58,10 +58,15 @@
         <ion-label>Add</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="update-inventory" (click)="navigateToUpdateInventory()">
+        <ion-tab-button tab="user-profiles" (click)="navigateToUserProfiles()">
+          <ion-icon  name="people-outline" ></ion-icon>
+          <ion-label>Manage Profiles</ion-label>
+        </ion-tab-button>
+
+      <!-- <ion-tab-button tab="update-inventory" (click)="navigateToUpdateInventory()">
         <ion-icon name="create-outline"></ion-icon>
         <ion-label>Update</ion-label>
-      </ion-tab-button>      
+      </ion-tab-button>       -->
 
       <ion-tab-button tab="pickup-inventory"  (click)="navigateToPickupInventory()">
         <ion-icon name="cart-outline"></ion-icon>
@@ -89,17 +94,18 @@
 
 
   <div class="container">
-    <button class="card" (click)="navigateToStoreInventory()">
-      <div class="card2">
+    <ion-card class="card" (click)="navigateToStoreInventory()">
+      <ion-card-content class="card2">
         Store
-      </div>
-    </button>
+      </ion-card-content>
+    </ion-card>
   
-    <button class="card" value="storeroom" (click)="navigateToViewStoreRoom()">
-      <div class="card2">
+    <ion-card class="card" (click)="navigateToViewStoreRoom()">
+      <ion-card-content class="card2">
         Storeroom
-      </div>
-    </button>
+      </ion-card-content>
+    </ion-card>
   </div>
-</ion-content>
 
+  
+  
