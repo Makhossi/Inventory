@@ -14,6 +14,7 @@ import 'firebase/compat/firestore';
 export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
+  role:any;
 
   // Default admin credentials
   defaultAdminEmail: string = 'mnguninompilo969@gmail.com';
@@ -66,12 +67,8 @@ export class LoginPage implements OnInit {
     });
     await loader.present();
 
-    // Check if the user is trying to log in with the default admin credentials
-    if (this.email === this.defaultAdminEmail && this.password === this.defaultAdminPassword) {
-      loader.dismiss();
-      this.router.navigate(['/user-profiles']);
-      return;
-    }
+    
+    
 
     // Query Firestore to find the document with the matching email
     const userQuerySnapshot = await firebase
