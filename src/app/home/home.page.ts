@@ -56,7 +56,7 @@ export class HomePage {
                 message = authorized ? 'Authorized user for picker page.' : 'Unauthorized user for picker page.';
                 break;
             case 'analytics':
-                authorized = this.userDocument.role === 'Delivery' || this.userDocument.role === 'Manager';
+                authorized = this.userDocument.role === 'Deliver' || this.userDocument.role === 'Manager';
                 message = authorized ? 'Authorized user for delivery page.' : 'Unauthorized user for delivery page.';
                 break;
             case 'add-inventory':

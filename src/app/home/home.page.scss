@@ -1,102 +1,72 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust column width */
-  grid-gap: 10px;
+ion-content.content {
+  --ion-background-color: black;
+}
+
+ion-tabs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.tab_label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Increase the height of the tabs to accommodate the bold font */
+.tab,
+.tab_label {
+  height: 36px; /* Increase or decrease as needed */
+}
+
+/* Raise the tabs up a bit */
+.tab-container {
+  padding-top: 10px; /* Adjust as needed */
+}
+
+/* Remove the white border around the tabs */
+.tab-container {
+  border: none;
+}
+
+/* Set the background color of the tabs */
+.tab-container {
+  background-color: #252525; /* Change to your preferred color */
+}
+
+.container {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
 }
 
-.menu-card {
-  border-radius: 8px; /* Slightly reduce border radius */
+.card {
+  width: 190px;
+  height: 254px;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 20px;
+  transition: all .3s;
+  cursor: pointer; /* Added to indicate it's clickable */
+  margin: 0 10px; /* Added margin for spacing between cards */
 }
 
-.menu-card ion-card-header {
-  border-radius: 10px;
-	overflow: hidden;
-	position: relative;
-	transition: transform 0.3s ease-in-out;
+.card2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  transition: all .2s;
 }
 
-@media screen and (max-width: 768px) {
-  .menu-card ion-card-header {
-    font-size: 0.6rem; /* Further decrease font size for smaller screens */
-  }
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
 }
 
-.advertisement-tags {
-  display: none; /* Hide advertisement tags on small screens */
+.card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
 }
-
-/* Media query for smaller screens */
-@media screen and (max-width: 576px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Further adjust column width */
-  }
-  
-  .menu-card ion-card-header {
-    font-size: 0.5rem; /* Further decrease font size for smaller screens */
-  }
-}
-
-
-.menu-card ion-img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.menu-card ion-card-header {
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	color: white;
-	font-size: 0.8rem;
-	background-color: rgba(0, 0, 0, 0.5);
-	padding: 5px 10px;
-	border-radius: 5px;
-}
-
-.menu-card:hover {
-	transform: scale(1.05);
-	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-  
-  /* Dark mode */
-  .dark-mode .advertisement-tag {
-	color: black; 
-  }
-  
-  .advertisement-tag ion-icon {
-	font-size: 1.5rem;
-	margin-right: 5px;
-  }
-  
-  .advertisement-tag:hover {
-	transform: scale(1.1);
-  }
-  
-  .business-for-hire {
-	border: 2px solid #6126ce;
-  }
-  
-  .freelancers {
-	border: 2px solid #6126ce;
-  }
-   
-
-  ion-header {
-    ion-toolbar {
-      --background: #c24d2c; 
-      color:#fff;
-      text-align: center;
-    }
-  }
-  ion-segment {
-    --background: #c24d2c;
-    font-weight: bold;
-  }
-  ion-segment {
-    --background: #c24d2c;
-    font-weight: bold;
-  }
