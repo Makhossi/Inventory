@@ -1,7 +1,7 @@
 <!-- <ion-content class="ion-padding" style="--background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/v.jpg') no-repeat center / cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
  
   
-<!--  
+
   <ion-segment value="custom">
     <ion-segment-button value="custom">
       <ion-label>Menu</ion-label>
@@ -46,9 +46,46 @@
     
   </div>
 </ion-content>  -->
+<style>
+  .scrollable-container{
+    width:100%;
+    height: auto;
+    margin: 20px auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: relative;
 
 
-<ion-content class="content">
+
+    display: flex;
+    place-content: center;
+  }
+  .scrollable-container::-webkit-scrollbar{
+    width: 0  ;
+    height: 0;
+  }
+  .card-container{
+    width:100%;
+    display: inline-block;
+
+  }
+.container{
+display: inline-block;
+}
+.main-container{
+width: 100%;
+height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+</style>
+
+
+<ion-content class="content" >
 
   <!-- Your existing ion-tabs -->
   <ion-tabs>
@@ -58,51 +95,95 @@
         <ion-label>Add</ion-label>
       </ion-tab-button> -->
 
-        <ion-tab-button tab="user-profiles" (click)="navigateToUserProfiles()">
+        <!-- <ion-tab-button tab="user-profiles" (click)="navigateToUserProfiles()">
           <ion-icon  name="people-outline" ></ion-icon>
           <ion-label>Manage Profiles</ion-label>
-        </ion-tab-button>
+        </ion-tab-button> -->
 
       <!-- <ion-tab-button tab="update-inventory" (click)="navigateToUpdateInventory()">
         <ion-icon name="create-outline"></ion-icon>
         <ion-label>Update</ion-label>
-      </ion-tab-button>       -->
+      </ion-tab-button> -->
+
+      <ion-tab-button tab="user-profiles" *ngIf="showManageProfilesTab" (click)="navigateToUserProfiles()">
+        <ion-icon  name="people-outline" ></ion-icon>
+        <ion-label>Manage Profiles</ion-label>
+      </ion-tab-button>
+      
+      <ion-tab-button tab="analytics" *ngIf="showAnalyticsTab" (click)="navigateToDeliverInventory()">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <ion-label>Analytics</ion-label>
+      </ion-tab-button>
 
       <ion-tab-button tab="pickup-inventory"  (click)="navigateToPickupInventory()">
         <ion-icon name="cart-outline"></ion-icon>
         <ion-label>Add Storeroom</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="analytics" (click)="navigateToDeliverInventory()">
+      <!-- <ion-tab-button tab="analytics" (click)="navigateToDeliverInventory()">
         <ion-icon name="analytics-outline"></ion-icon>
         <ion-label>Analytics</ion-label>
+      </ion-tab-button> -->
+
+      <ion-tab-button tab="add-inventory" *ngIf="showSlipTab" (click)="navigateToAddInventory()">
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label>Add</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button *ngIf="!isDeliver" tab="add-inventory" (click)="navigateToAddInventory()">
-    <ion-icon name="add-outline"></ion-icon>
-        <ion-label>Slips</ion-label>
-      </ion-tab-button>
+      <!-- <ion-tab-button tab="add-inventory">
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label>Invoices</ion-label>
+      </ion-tab-button> -->
 
     </ion-tab-bar>
   </ion-tabs>
 
 
 
+  <!-- <div class="scrollable-container">
+    <div class="card-container">
+      
+      <div class="container" *ngIf="showStoreCard">
+        <ion-card class="card" (click)="navigateToStoreInventory()">
+          <ion-card-content class="card2">Store</ion-card-content>
+        </ion-card>
+      </div>
+      <div class="container">
+        <ion-card class="card">
+          <ion-card-content class="card2">Invoice</ion-card-content>
+        </ion-card>
+      </div>
+      <div class="container">
+        <ion-card class="card" *ngIf="showStoreroomCard" (click)="navigateToViewStoreRoom()">
+          <ion-card-content class="card2">Storeroom</ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div> -->
+<div class="main-container">
 
-  <div class="container">
-    <ion-card class="card" (click)="navigateToStoreInventory()">
-      <ion-card-content class="card2">
-        Store
-      </ion-card-content>
-    </ion-card>
-  
-    <ion-card class="card" (click)="navigateToViewStoreRoom()">
-      <ion-card-content class="card2">
-        Storeroom
-      </ion-card-content>
-    </ion-card>
+  <div class="scrollable-container">
+    <div class="card-container">
+      
+      <div class="container" *ngIf="showStoreCard">
+        <ion-card class="card" (click)="navigateToStoreInventory()">
+          <ion-card-content class="card2">Store</ion-card-content>
+        </ion-card>
+      </div>
+      <div class="container">
+        <ion-card class="card">
+          <ion-card-content class="card2">Invoice</ion-card-content>
+        </ion-card>
+      </div>
+      <div class="container">
+        <ion-card class="card" *ngIf="showStoreroomCard" (click)="navigateToViewStoreRoom()">
+          <ion-card-content class="card2">Storeroom</ion-card-content>
+        </ion-card>
+      </div>
+    </div>
   </div>
-  
+</div>
 
+</ion-content>
   
   

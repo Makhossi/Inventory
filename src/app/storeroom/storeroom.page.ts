@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-storeroom',
   templateUrl: './storeroom.page.html',
@@ -19,10 +20,14 @@ export class StoreroomPage implements OnInit {
   selectedImageUrl = '';
   modalTitle = '';
 
-  constructor(private firestore: AngularFirestore, private router: Router) { }
+  constructor(private firestore: AngularFirestore, private router: Router, private navCtrl: NavController) { }
 
   ngOnInit() {
     this.getInventory();
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 
   navigateToUpdatePage(item: any) {

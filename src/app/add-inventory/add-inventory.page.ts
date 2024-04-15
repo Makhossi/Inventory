@@ -139,7 +139,7 @@ toggleMode() {
     console.log("Storeroom Inventory Updated (Minused)")
    
   } else{
-    this.presentToast("this product barcode does  not metch any on our storeroom")
+    this.presentToast("this product barcode does  not match any on our storeroom")
     return;
   }
 ///////////////////////////////////////
@@ -218,10 +218,7 @@ if (!existingItemQueryStore.empty) {
       loader.dismiss();
     }
    
-    
-
-
-
+  0
     
   }
 

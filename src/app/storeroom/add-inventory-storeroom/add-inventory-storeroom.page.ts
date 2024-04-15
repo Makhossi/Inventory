@@ -31,7 +31,7 @@ export class AddInventoryStoreroomPage implements OnInit {
   currentDate: Date;
   currentTime: string;
   phone:any;
-  Cumpany:any;
+  // Cumpany:any;
   pickersDetailsEmail:any;
 
 
@@ -132,7 +132,7 @@ export class AddInventoryStoreroomPage implements OnInit {
         location:"storeroom",
         pickersDetailsEmail:this.pickersDetailsEmail,
         phone :this.phone,
-        Cumpany:this.Cumpany
+        // Cumpany:this.Cumpany
       };
       this.cart.push(newItem);
       console.log(this.cart);
@@ -169,7 +169,7 @@ export class AddInventoryStoreroomPage implements OnInit {
           barcode: item.barcode,
           pickersDetailsEmail:this.pickersDetailsEmail,
           phone :this.phone,
-          Cumpany:this.Cumpany
+          // Cumpany:this.Cumpany
         })),
       };
       await this.firestore.collection('slips').add(slipData);
@@ -238,13 +238,13 @@ const docDefinition = {
           color: 'black',
           alignment: 'center'
       },
-      companyName: { // Style for the company name
-          fontSize: 28,
-          bold: true,
-          margin: [0, 0, 0, 20], // Adjust margin to separate company name from header
-          alignment: 'center',
-          color: '#dc3545' // Red color for the company name
-      }
+      // companyName: { // Style for the company name
+      //     fontSize: 28,
+      //     bold: true,
+      //     margin: [0, 0, 0, 20], // Adjust margin to separate company name from header
+      //     alignment: 'center',
+      //     color: '#dc3545' // Red color for the company name
+      // }
   }
 };
 

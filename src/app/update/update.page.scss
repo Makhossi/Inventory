@@ -1,6 +1,33 @@
-ion-header {
-    ion-toolbar {
-      --background: #c24d2c; 
-      color:#fff;
-    }
-  }
+ion-toolbar {
+  --background: #ffffff;
+  --color: #000000;
+  text-align: center;
+}
+
+.header-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.back-button {
+  font-weight: bold;
+}
+
+.toggle-switch {
+  --background: #007bff;
+}
+
+.image-button {
+  margin-top: 20px;
+}
+
+.update-button {
+  margin-top: 20px;
+}
+
+ion-button {
+  --border-radius: 15px; /* Adjust the value to change the border radius */
+  --background:#3d3b3b; /* Replace 'your-color' with the desired background color */
+}
+
+

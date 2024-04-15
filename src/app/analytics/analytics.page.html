@@ -1,49 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-segment color="success" value="all">
-      <ion-segment-button value="all">
-        <ion-label>Analytics</ion-label>
-      </ion-segment-button>
-      <ion-segment-button routerLink="/delivery" value="favorites">
-        <ion-label>Invoice Slip</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-    <ion-icon routerLink="/home" slot="end" name="arrow-back-outline"></ion-icon>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="scroll-container">
-    <p class="pp">STORE INVENTORY</p>
-    <div class="chart-container">
-      
-      <br>
-      <canvas id="quantityByCategoryChart"></canvas>
+  <div class="analytics-container">
+    <div class="chart-section">
+      <ion-label class="chart-title">Store Inventory</ion-label>
+      <div class="chart-container" style="background-color: #d1c4e9;">
+        <canvas id="quantityByCategoryChart"></canvas>
+      </div>
     </div>
- <br>
- <br>
- <p class="pp">STOREROOM INVENTORY</p>
-    <div class="chart-container">
-     
-      <br>
-      <canvas id="quantityByCategoryStorommChart"></canvas>
+    
+    <div class="chart-section">
+      <ion-label class="chart-title">Storeroom Inventory</ion-label>
+      <div class="chart-container" style="background-color: #b3e5fc;">
+        <canvas id="quantityByCategoryStorommChart"></canvas>
+      </div>
     </div>
-    <br>
-    <br>
     
-      <p class="pp">TOTAL CATEGORY COMPARISON ON BOTH STORE AND STOREROOM</p>
+    <div class="chart-section">
+      <ion-label class="chart-title">Total Category Comparison</ion-label>
+      <div class="chart-container" style="background-color: #ffcc80;">
+        <canvas id="categoryComparisonChart"></canvas>
+      </div>
+    </div>
     
-      <canvas id="categoryComparisonChart"></canvas>
-
-
-     <br>
-     <br>
-<p class="pp">TOTAL PRODUCT QUANTITIES </p>
-<canvas id="totalQuantitiesChart"></canvas>
-
-<br>
-<br>
-<p class="pp">BEST PERFOMING PRODUCT</p>
-<canvas id="updateFrequencyChart"></canvas>
+    <div class="chart-section">
+      <ion-label class="chart-title">Total Product Quantities</ion-label>
+      <div class="chart-container" style="background-color: #c5cae9;">
+        <canvas id="totalQuantitiesChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-section">
+      <ion-label class="chart-title">Best Performing Product</ion-label>
+      <div class="chart-container" style="background-color: #ffab91;">
+        <canvas id="updateFrequencyChart"></canvas>
+      </div>
+    </div>
   </div>
 </ion-content>

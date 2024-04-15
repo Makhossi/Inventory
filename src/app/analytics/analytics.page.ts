@@ -170,6 +170,18 @@ export class AnalyticsPage implements OnInit {
             scales: {
               y: {
                 beginAtZero: true,
+                ticks: {
+                  font: {
+                    weight: 'bold' // Set y-axis tick font to bold
+                  }
+                }
+              },
+              x: {
+                ticks: {
+                  font: {
+                    weight: 'bold'
+                  }
+                }
               },
             },
           },
@@ -178,6 +190,7 @@ export class AnalyticsPage implements OnInit {
   }
 
 
+  
   generateQuantityByCategory(){
     this.firestore
       .collection('storeroomInventory')

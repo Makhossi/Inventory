@@ -1,3 +1,5 @@
+<!-- Inventory Component HTML -->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Inventory</ion-title>
@@ -29,130 +31,37 @@
     </ion-select>
   </ion-item>
 
- 
-  <!-- <br>
-  <ion-segment value="segment">
-    <ion-segment-button value="custom" routerLink="/home">
-      <ion-label>Menu</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="segment">
-      <ion-label>Store</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="storeroom" routerLink="/storeroom">
-      <ion-label>StoreRoom</ion-label>
-    </ion-segment-button>
-  </ion-segment> -->
+  <br>
 
-
- <ion-card class="inventory-item" *ngFor="let item of filteredInventory">
-  <ion-card-header class="animated-header">
-    <ion-card-title>
-      <ion-icon name="basket-outline"></ion-icon>
-      {{ item.name }}
-    </ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content class="animated-content">
-    <p>
-      <ion-icon name="pricetags-outline"></ion-icon>
-      Category: {{ item.category }}
-    </p>
-    <p>
-      <ion-icon name="document-text-outline"></ion-icon>
-      Description: {{ item.description }}
-    </p>
-    <p>
-      <ion-icon name="cube-outline"></ion-icon>
-      Quantity: {{ item.quantity }}
-    </p>
-    <p>
-      <ion-icon name="barcode-outline"></ion-icon>
-      Barcode: {{ item.barcode }}
-    </p>
-    <p>
-      <ion-icon name="person-outline"></ion-icon>
-      Picker's Details: {{ item.pickersDetails }}
-    </p>
-    <p>
-      <ion-icon name="calendar-outline"></ion-icon>
-      Date Of Pickup: {{ item.dateOfPickup }}
-    </p>
-    <p>
-      <ion-icon name="time-outline"></ion-icon>
-      Time Of Pickup: {{ item.timeOfPickup }}
-    </p>
-    <img class="thumbnail" [src]="item.imageUrl" alt="{{ item.name }} Image">
-  </ion-card-content>
-
-  <ion-row class="ion-no-padding">
-    <ion-col>
-      <ion-button (click)="goToUpdate(item.name,item.category,item.description,item.quantity,item.barcode,item.pickersDetails,item.dateOfPickup,item.timeOfPickup ,item.imageUrl )" color="primary" expand="block">
-        <ion-icon name="create-outline"></ion-icon>
-        Update
-      </ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button (click)="openModal(item.imageUrl, item.name)" color="secondary" expand="block">
-        <ion-icon name="eye-outline"></ion-icon>
-        View
-      </ion-button>
-    </ion-col>
-  </ion-row>
-</ion-card>
-
-<ion-modal [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>{{ modalTitle }}</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="isModalOpen = false">
-            <ion-icon name="close-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <img [src]="selectedImageUrl" alt="Full Image">
-    </ion-content>
-  </ng-template>
-</ion-modal>
-  
-
-<!-- <ion-grid>
-  <ion-row>
-    <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let item of filteredInventory">
-      <ion-card class="inventory-item">
-        <ion-img [src]="item.imageUrl" alt="{{ item.name }} Image" class="card-image"></ion-img>
-
-        <ion-card-content>
-          <ion-card-header>
-            <ion-card-title>
-              <ion-icon name="basket-outline"></ion-icon>
-              {{ item.name }}
-            </ion-card-title>
-          </ion-card-header>
-
-          <p>
-            <ion-icon name="pricetags-outline"></ion-icon>
-            Category: {{ item.category }}
-          </p>
-          <p>
-            <ion-icon name="document-text-outline"></ion-icon>
-            Description: {{ item.description }}
-          </p>
-          <p>
-            <ion-icon name="cube-outline"></ion-icon>
-            Quantity: {{ item.quantity }}
-          </p>
-          <p>
-            <ion-icon name="barcode-outline"></ion-icon>
-            Barcode: {{ item.barcode }}
-          </p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid> -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Barcode</th>
+        <th>Picker's Details</th>
+        <th>Date Of Pickup</th>
+        <th>Time Of Pickup</th>
+        <!-- <th>Image</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterate over each item in filteredInventory and display its data -->
+      <tr *ngFor="let item of filteredInventory">
+        <tr *ngFor="let item of filteredInventory">
+          <td style="color: white;">{{ item.name }}</td>
+          <td style="color: white;">{{ item.category }}</td>
+          <td style="color: white;">{{ item.description }}</td>
+          <td style="color: white;">{{ item.quantity }}</td>
+          <td style="color: white;">{{ item.barcode }}</td>
+          <td style="color: white;">{{ item.pickersDetails }}</td>
+          <td style="color: white;">{{ item.dateOfPickup }}</td>
+          <td style="color: white;">{{ item.timeOfPickup }}</td>
+        <!-- <td><img [src]="item.imageUrl" alt="{{ item.name }} Image" style="max-width: 100px; max-height: 100px;"></td> -->
+      </tr>
+    </tbody>
+  </table>
 
 </ion-content>

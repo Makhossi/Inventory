@@ -8,6 +8,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.page.html',
@@ -16,6 +17,7 @@ import { LoadingController, NavController, ToastController } from '@ionic/angula
 export class UpdatePage implements OnInit {
   barcode!: string; // Variable to hold the ID of the inventory item
   itemName: string = '';
+  itemDeliver: string = '';
   itemCategory: string = '';
   itemDescription: string = '';
   itemQuantity: number = 0;
@@ -31,7 +33,8 @@ export class UpdatePage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private firestore: AngularFirestore,
-    private fireStorage: AngularFireStorage
+    private fireStorage: AngularFireStorage,
+    private navCtrl: NavController
   ) {
     
   }
@@ -39,6 +42,10 @@ export class UpdatePage implements OnInit {
   ngOnInit() {
     this.getPassedData();
     document.querySelector('body')?.classList.remove('scanner-active'); 
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 
   async scanBarcode() {
@@ -87,6 +94,7 @@ if(this.imageBase64){
       const existingItemData: any = existingItemDoc.data();
       await existingItemDoc.ref.update({
         name: this.itemName,
+        deliver: this.itemDeliver,
         category: this.itemCategory,
         description: this.itemDescription,
         barcode:this.barcode,
