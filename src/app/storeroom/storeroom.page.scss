@@ -59,3 +59,35 @@ ion-content {
       opacity: 1;
     }
   }
+
+  .card-image {
+    width: 100%; /* Image fills the container */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Adjust the spacing between cards */
+  ion-card.inventory-item {
+    margin-bottom: 20px;
+  }
+  
+  /* Adjust the width of cards on different screen sizes */
+  @media screen and (min-width: 576px) {
+    ion-col {
+      max-width: 50%; /* Two cards per row on small screens */
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    ion-col {
+      max-width: 33.33%; /* Three cards per row on medium screens */
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    ion-col {
+      max-width: 25%; /* Four cards per row on large screens */
+    }
+  }
+  
+  
+  

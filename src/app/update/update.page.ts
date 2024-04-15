@@ -32,11 +32,13 @@ export class UpdatePage implements OnInit {
     private router: Router,
     private firestore: AngularFirestore,
     private fireStorage: AngularFireStorage
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     this.getPassedData();
-    // Get the item ID from route parameters
+    document.querySelector('body')?.classList.remove('scanner-active'); 
   }
 
   async scanBarcode() {
@@ -63,6 +65,7 @@ export class UpdatePage implements OnInit {
       }
     }
   }
+  
   async updateItem() {
 
 
@@ -75,7 +78,7 @@ if(this.imageBase64){
    
     // Check if there's an existing item with the same name in the inventory collection
     const existingItemQueryStore = await this.firestore
-      .collection('inventory')
+      .collection('storeroomInventory')
       .ref.where('barcode', '==', this.barcode)
       .get();
     if (!existingItemQueryStore.empty) {
@@ -100,6 +103,9 @@ if(this.imageBase64){
   toggleMode() {
     if (this.toggleChecked) {
       this.barcode = ''; // Clear the barcode value when switching to input mode
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
+      document.querySelector('body')?.classList.remove('scanner-active'); 
     }
   }
   clearFields() {
@@ -149,7 +155,7 @@ if(this.imageBase64){
       this.itemDescription = this.productInfor.description;
       this.itemQuantity = this.productInfor.quantity;
       this.newImage = this.productInfor.imageUrl;
-    
+    this.imageUrl =this.productInfor.imageUrl
     }
   }
 }

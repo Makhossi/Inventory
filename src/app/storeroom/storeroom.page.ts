@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-storeroom',
   templateUrl: './storeroom.page.html',
@@ -18,10 +19,14 @@ export class StoreroomPage implements OnInit {
   selectedImageUrl = '';
   modalTitle = '';
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private router: Router) { }
 
   ngOnInit() {
     this.getInventory();
+  }
+
+  navigateToUpdatePage(item: any) {
+    this.router.navigate(['/update'], { state: item });
   }
 
   openModal(imageUrl: string, itemName: string) {

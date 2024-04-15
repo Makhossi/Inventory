@@ -1,7 +1,7 @@
 <!-- <ion-content class="ion-padding" style="--background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/v.jpg') no-repeat center / cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
  
   
- 
+<!--  
   <ion-segment value="custom">
     <ion-segment-button value="custom">
       <ion-label>Menu</ion-label>
@@ -45,7 +45,7 @@
 
     
   </div>
-</ion-content> -->
+</ion-content>  -->
 
 
 <ion-content class="content">
@@ -53,10 +53,10 @@
   <!-- Your existing ion-tabs -->
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="add-inventory" (click)="navigateToPickupInventory()">
+      <!-- <ion-tab-button tab="add-inventory" (click)="navigateToAddInventory()">
         <ion-icon name="add-outline"></ion-icon>
         <ion-label>Add</ion-label>
-      </ion-tab-button>
+      </ion-tab-button> -->
 
         <ion-tab-button tab="user-profiles" (click)="navigateToUserProfiles()">
           <ion-icon  name="people-outline" ></ion-icon>
@@ -77,20 +77,16 @@
         <ion-icon name="analytics-outline"></ion-icon>
         <ion-label>Analytics</ion-label>
       </ion-tab-button>
+
+      <ion-tab-button *ngIf="!isDeliver" tab="add-inventory" (click)="navigateToAddInventory()">
+    <ion-icon name="add-outline"></ion-icon>
+        <ion-label>Slips</ion-label>
+      </ion-tab-button>
+
     </ion-tab-bar>
   </ion-tabs>
 
 
-
-  <!-- Your added ion-segment -->
-  <!-- <ion-segment value="custom">
-    <ion-segment-button value="segment" (click)="navigateToStoreInventory()">
-      <ion-label>Store</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="storeroom" (click)="navigateToViewStoreRoom()">
-      <ion-label>StoreRoom</ion-label>
-    </ion-segment-button>
-  </ion-segment> -->
 
 
   <div class="container">
@@ -106,6 +102,7 @@
       </ion-card-content>
     </ion-card>
   </div>
+  
 
   
   

@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class AddInventoryPage implements OnInit {
   imageUrl: string | null = null;
   cart: any[] = []; 
   qrCodeIdentifire:any;
+  userRole: string = '';
 
 
  // Variable to hold the barcode value
@@ -40,7 +42,21 @@ export class AddInventoryPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getUser().subscribe((user: any) => {
+      if (user.exists) {
+        this.userRole = user.data().role;
+      }
+    });
   }
+
+  getUser(): Observable<any> {
+    // Modify this according to your actual implementation
+    // For example, if user details are stored in Firestore
+    return this.firestore.collection('Users').doc('userId').get();
+  }
+
+
+
   async takePicture() {
     const image = await Camera.getPhoto({
       quality: 90,
