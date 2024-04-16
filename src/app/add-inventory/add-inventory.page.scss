@@ -1,8 +1,8 @@
 /* General Styles */
-ion-content {
-  --ion-background-color: var(--ion-color-light);
-  --animate-duration: 0.4s;
+.bold-title {
+  font-weight: bold;
 }
+
 
 ion-card {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -12,7 +12,7 @@ ion-card {
 }
 
 ion-card-header {
-  background-color:#c24d2c;
+  background-color:#cccccc;
   color: var(--ion-color-light);
   text-align: center;
   font-size: 18px;
@@ -47,7 +47,7 @@ ion-textarea {
 .custom-file-input {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #c24d2c;
+  background-color: #bbb6b5;
   color: var(--ion-color-light);
   border: none;
   border-radius: 5px;
@@ -67,7 +67,7 @@ width: 100%;
 }
 
 ion-button {
-  --background: #c24d2c;
+  --background: #7a7a7a;
   --color: var(--ion-color-light);
   --border-radius: 20px;
   --box-shadow: none;
@@ -165,7 +165,23 @@ ion-datetime .datetime-text {
 
 ion-header {
   ion-toolbar {
-    --background: #c24d2c; 
-    color:#fff;
+    --background: #f8f5f5; 
+    color:#0e0d0d;
+
+  }
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field label {
+  margin-right: 20px; /* Adjust spacing between labels as needed */
+}
+
+@media screen and (max-width: 768px) {
+  .field label {
+    margin-right: 10px; /* Adjust spacing for smaller screens */
   }
 }

@@ -1,3 +1,15 @@
+
+<ion-buttons slot="start">
+  <ion-button color="dark" class="clear-background" routerLink="/login">
+    <ion-icon slot="icon-only" name="log-out"></ion-icon>
+  </ion-button>
+</ion-buttons>
+
+
+
+
+
+
 <!-- <ion-content class="ion-padding" style="--background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/v.jpg') no-repeat center / cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
  
   
@@ -115,9 +127,9 @@ height: 100%;
         <ion-label>Analytics</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="pickup-inventory"  (click)="navigateToPickupInventory()">
+      <ion-tab-button tab="pickup-inventory" *ngIf="showStoreroomCard"  (click)="navigateToPickupInventory()">
         <ion-icon name="cart-outline"></ion-icon>
-        <ion-label>Add Storeroom</ion-label>
+        <ion-label>Add to Storeroom</ion-label>
       </ion-tab-button>
 
       <!-- <ion-tab-button tab="analytics" (click)="navigateToDeliverInventory()">
@@ -171,8 +183,8 @@ height: 100%;
         </ion-card>
       </div>
       <div class="container">
-        <ion-card class="card">
-          <ion-card-content class="card2">Invoice</ion-card-content>
+        <ion-card  class="card">
+          <ion-card-content routerLink="/delivery" class="card2">Invoice</ion-card-content>
         </ion-card>
       </div>
       <div class="container">

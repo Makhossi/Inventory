@@ -2,8 +2,8 @@
 
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Inventory</ion-title>
-    <ion-icon style="font-size: 30px; font-weight: bolder;" routerLink="/home" slot="end" name="arrow-back-outline"></ion-icon>
+    <ion-title>Picked Items</ion-title>
+    <ion-icon style="font-size: 30px; font-weight: bolder;" routerLink="/home" slot="start" name="arrow-back-outline"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -33,23 +33,23 @@
 
   <br>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Barcode</th>
-        <th>Picker's Details</th>
-        <th>Date Of Pickup</th>
-        <th>Time Of Pickup</th>
-        <!-- <th>Image</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Iterate over each item in filteredInventory and display its data -->
-      <tr *ngFor="let item of filteredInventory">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Barcode</th>
+          <th>Picker's Details</th>
+          <th>Date Of Pickup</th>
+          <th>Time Of Pickup</th>
+          <!-- <th>Image</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over each item in filteredInventory and display its data -->
         <tr *ngFor="let item of filteredInventory">
           <td style="color: white;">{{ item.name }}</td>
           <td style="color: white;">{{ item.category }}</td>
@@ -59,9 +59,11 @@
           <td style="color: white;">{{ item.pickersDetails }}</td>
           <td style="color: white;">{{ item.dateOfPickup }}</td>
           <td style="color: white;">{{ item.timeOfPickup }}</td>
-        <!-- <td><img [src]="item.imageUrl" alt="{{ item.name }} Image" style="max-width: 100px; max-height: 100px;"></td> -->
-      </tr>
-    </tbody>
-  </table>
+          <!-- <td><img [src]="item.imageUrl" alt="{{ item.name }} Image" style="max-width: 100px; max-height: 100px;"></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 
 </ion-content>

@@ -28,6 +28,10 @@ export class AddInventoryPage implements OnInit {
   cart: any[] = []; 
   qrCodeIdentifire:any;
   userRole: string = '';
+  products: any[] = [];
+  selectedProduct: any; 
+  selectedProductDescription: any;
+  
 
 
  // Variable to hold the barcode value
@@ -55,6 +59,68 @@ export class AddInventoryPage implements OnInit {
     return this.firestore.collection('Users').doc('userId').get();
   }
 
+  // fetchProductsByCategory(category: string) {
+  //   this.firestore.collection('storeInventory', ref => ref.where('category', '==', category)).valueChanges().subscribe((products: any[]) => {
+  //     this.products = products;
+  //   });
+  // }
+
+  // Function to fetch products based on selected category
+  fetchProductsByCategory(category: string) {
+    this.firestore.collection('storeInventory', ref => ref.where('category', '==', category)).valueChanges().subscribe((products: any[]) => {
+      this.products = products;
+      // Reset selected product and description when category changes
+      this.selectedProduct = null;
+      this.selectedProductDescription = null;
+    });
+  }
+
+  // Function to fetch description of the selected product
+  fetchProductDescription(productName: string) {
+    this.firestore.collection('storeInventory', ref => ref.where('name', '==', productName)).valueChanges().subscribe((products: any[]) => {
+      if (products.length > 0) {
+        this.selectedProductDescription = products[0].description;
+      } else {
+        this.selectedProductDescription = ''; // Set description to empty if product not found
+      }
+    });
+  }
+
+  async searchProductByBarcode() {
+    if (this.barcode.trim() === '') {
+      // If the barcode input is empty, clear other input fields
+      this.clearFieldsExceptBarcode();
+      return;
+    }
+  
+    // Search for the product with the entered barcode in Firestore
+    const querySnapshot = await this.firestore
+      .collection('storeroomInventory')
+      .ref.where('barcode', '==', this.barcode.trim())
+      .limit(1)
+      .get();
+  
+    if (!querySnapshot.empty) {
+      // If a product with the entered barcode is found, populate the input fields
+      const productData:any = querySnapshot.docs[0].data();
+      this.itemName = productData.name;
+      this.itemCategory = productData.category;
+      this.itemDescription = productData.description;
+      // You can similarly populate other input fields here
+    } else {
+      // If no product with the entered barcode is found, clear other input fields
+      this.clearFieldsExceptBarcode();
+      this.presentToast('Product not found',);
+    }
+  }
+  
+  clearFieldsExceptBarcode() {
+    // Clear all input fields except the barcode input
+    this.itemName = '';
+    this.itemCategory = '';
+    this.itemDescription = '';
+    // Clear other input fields here
+  }
 
 
   async takePicture() {
@@ -181,6 +247,8 @@ if (!existingItemQueryStore.empty) {
       loader.dismiss();
     }
   }
+
+  
 
   async generateSlip() {
     const loader = await this.loadingController.create({

@@ -16,7 +16,10 @@ ion-content {
     --ion-font-family: 'Poppins', sans-serif;
   }
   
-
+  .bold-icon {
+    font-weight: bold;
+    font-size: 1.2em; /* Adjust the font size as needed */
+  }
   /* Inventory Item Styles */
   .inventory-item {
     margin-bottom: 20px;

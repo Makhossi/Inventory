@@ -31,3 +31,33 @@ body.scanner-active {
     --ion-background-color: transparent;
   }
 
+  ion-content{
+    --background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/d.jpg') no-repeat center / cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.scanner-active {
+    --background: transparent !important;
+    --ion-background-color: transparent !important;
+    background: transparent none !important;
+    --background: transparent none !important;
+    --ion-background-color: none;
+  }
+
+  
+  // .container{
+  //   background: linear-gradient(180deg, rgb(215, 220, 224) 0%, rgba(255, 255, 255, 1) 100%);
+  // } .custom-scan-button {
+  //   width: 100%;
+  // }
+//   ion-app.cameraView,
+// ion-app.cameraView ion-content,
+// ion-app.cameraView .nav-decor,
+// ion-app.cameraView ion-page {
+//   background: transparent none !important;
+//   --background: transparent none !important;
+//   --ion-background-color: none;
+// }

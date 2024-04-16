@@ -34,7 +34,9 @@ export class UpdatePage implements OnInit {
     private router: Router,
     private firestore: AngularFirestore,
     private fireStorage: AngularFireStorage,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
   ) {
     
   }
@@ -74,37 +76,55 @@ export class UpdatePage implements OnInit {
   }
   
   async updateItem() {
-
-
-if(this.imageBase64){
-  await this.deleteFileIfExists.call(this, this.productInfor.imageUrl);
-  this.imageUrl = await this.uploadImage(this.imageBase64);
-}
-
-
-   
-    // Check if there's an existing item with the same name in the inventory collection
-    const existingItemQueryStore = await this.firestore
-      .collection('storeroomInventory')
-      .ref.where('barcode', '==', this.barcode)
-      .get();
-    if (!existingItemQueryStore.empty) {
-      // Update the quantity of the existing item in the storeroomInventory collection
-      const existingItemDoc = existingItemQueryStore.docs[0];
-      const existingItemData: any = existingItemDoc.data();
-      await existingItemDoc.ref.update({
-        name: this.itemName,
-        deliver: this.itemDeliver,
-        category: this.itemCategory,
-        description: this.itemDescription,
-        barcode:this.barcode,
-        quantity: this.itemQuantity,
-        timestamp: new Date(), 
-        imageUrl: this.imageUrl
-      
-        // Add timestamp });
-        //console.log("Storeroom Inventory Updated (Plused)");
+    const loading = await this.loadingCtrl.create({
+      message: 'Updating item...',
+      spinner: 'circles', // Choose a spinner type
+      translucent: true,
+      backdropDismiss: false // Prevent dismissing the loader by tapping outside
+    });
+    await loading.present();
+  
+    try {
+      if (this.imageBase64) {
+        await this.deleteFileIfExists(this.productInfor.imageUrl);
+        this.imageUrl = await this.uploadImage(this.imageBase64);
+      }
+  
+      const existingItemQueryStore = await this.firestore
+        .collection('storeroomInventory')
+        .ref.where('barcode', '==', this.barcode)
+        .get();
+  
+      if (!existingItemQueryStore.empty) {
+        const existingItemDoc = existingItemQueryStore.docs[0];
+        const existingItemData: any = existingItemDoc.data();
+        await existingItemDoc.ref.update({
+          name: this.itemName,
+          deliver: this.itemDeliver,
+          category: this.itemCategory,
+          description: this.itemDescription,
+          barcode: this.barcode,
+          quantity: this.itemQuantity,
+          timestamp: new Date(),
+          imageUrl: this.imageUrl
+        });
+      }
+  
+      // Dismiss the loading indicator
+      await loading.dismiss();
+      // Navigate back to the storeroom page
+      this.navCtrl.back();
+    } catch (error) {
+      console.error('Error updating item:', error);
+      // Dismiss the loading indicator if an error occurs
+      await loading.dismiss();
+      // Show an error toast to the user
+      const toast = await this.toastCtrl.create({
+        message: 'Failed to update item. Please try again.',
+        duration: 3000, // 3 seconds
+        position: 'bottom'
       });
+      toast.present();
     }
   }
 

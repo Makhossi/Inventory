@@ -1,3 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Pick Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
 <ion-content *ngIf="userRole !== 'Deliver'">
   <div class="container">
     <ion-card class="card card2">
@@ -8,34 +18,38 @@
 
         <ion-item>
           <ion-label position="floating">Barcode</ion-label>
-          <ion-input type="text" [(ngModel)]="barcode" *ngIf="toggleChecked"></ion-input>
+          <ion-input type="text" (ionChange)="searchProductByBarcode()" [(ngModel)]="barcode" placeholder="Enter barcode"></ion-input>
           <ion-icon name="barcode-outline" slot="end" *ngIf="!toggleChecked" (click)="scanBarcode()"></ion-icon>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Product Name</ion-label>
-          <ion-input type="text" [(ngModel)]="itemName"></ion-input>
-        </ion-item>
 
+        
+        
         <div class="field">
           <label>
-            <input type="radio" value="Cleaning Detergents" [(ngModel)]="itemCategory" />
+            <input type="radio" value="Cleaning Detergents" [(ngModel)]="itemCategory" (change)="fetchProductsByCategory(itemCategory)" />
             Cleaning Detergents
           </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <label>
-            <input type="radio" value="Plastics" [(ngModel)]="itemCategory" />
+            <input type="radio" value="Plastics" [(ngModel)]="itemCategory" (change)="fetchProductsByCategory(itemCategory)" />
             Plastics
           </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <label>
-            <input type="radio" value="Cleaning Equipment" [(ngModel)]="itemCategory" />
+            <input type="radio" value="Cleaning Equipment" [(ngModel)]="itemCategory" (change)="fetchProductsByCategory(itemCategory)" />
             Cleaning Equipment
           </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
 
         <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea [(ngModel)]="itemDescription"></ion-textarea>
+          <ion-input type="text" [(ngModel)]="itemName" placeholder="Item Name"></ion-input>
         </ion-item>
+        
+
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [(ngModel)]="itemDescription" [value]="selectedProductDescription"></ion-textarea>
+        </ion-item>
+        
         <ion-item>
           <ion-label position="floating">Quantity</ion-label>
           <ion-input type="number" [(ngModel)]="itemQuantity"></ion-input>
@@ -53,13 +67,27 @@
           <ion-input type="time" [(ngModel)]="timeOfPickup"></ion-input>
         </ion-item>
 
+        <!-- <ion-button  expand="block" id="fileInput" color="medium" class="custom-file-input" (click)="takePicture()">
+          <ion-icon name="camera"></ion-icon>
+          Take Picture
+        </ion-button> -->
         <ion-button  expand="block" id="fileInput" color="medium" class="custom-file-input" (click)="takePicture()">
           <ion-icon name="camera"></ion-icon>
           Take Picture
         </ion-button>
+        
+        
+        <ion-toolbar>
+          <ion-buttons style="justify-content: center; align-items: center;">
 
-        <ion-button expand="block" (click)="addItem()" class="btn button1">Add Item</ion-button>
-        <ion-button expand="block" (click)="generateSlip()" class="btn button2">DONE</ion-button>
+            <ion-button color="primary" size="large" (click)="addItem()" class="update-button">
+              Add Item
+            </ion-button>
+            <ion-button color="success" size="large" (click)="generateSlip()" class="update-button">
+              Generate Slip
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
       </ion-card-content>
     </ion-card>
   </div>

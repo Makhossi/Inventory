@@ -11,12 +11,16 @@ ion-header {
   }
 
  /* General Styles */
-ion-content {
-    --background: #131212;
-    --ion-font-family: 'Poppins', sans-serif;
+// ion-content {
+//     --background: #131212;
+//     --ion-font-family: 'Poppins', sans-serif;
+//   }
+  
+  .table-wrapper {
+    max-height: 300px; /* Adjust the max-height as needed */
+    overflow-y: auto;
   }
   
-
   /* Inventory Item Styles */
   .inventory-item {
     margin-bottom: 20px;

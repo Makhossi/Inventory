@@ -33,6 +33,8 @@ export class HomePage {
     }
   }
 
+  
+
   async getUser(): Promise<void> {
     try {
       const user = await this.auth.currentUser;
@@ -66,7 +68,7 @@ export class HomePage {
             case 'Picker':
               // this.showAddTab = false;
               // this.showStoreCard = true;
-              this.showSlipTab = false;
+              this.showStoreroomCard = false;
               this.showManageProfilesTab = false;
               this.showAnalyticsTab = false;
               break;
@@ -100,7 +102,7 @@ export class HomePage {
             message = authorized ? 'Authorized user for user profiles page.' : 'Unauthorized user for user profiles page.';
             break;
           case 'add-inventory':
-            authorized = this.userDocument.role === 'Manager' || this.userDocument.role === 'Deliver';
+            authorized = this.userDocument.role === 'Manager' || this.userDocument.role === 'Picker';
             message = authorized ? 'Authorized user for slips page.' : 'Unauthorized user for slips page.';
             break;
           case 'add-inventory-storeroom':
@@ -116,7 +118,7 @@ export class HomePage {
             message = authorized ? 'Authorized user for storeroom page.' : 'Unauthorized user for storeroom page.';
             break;
           case 'view':
-            authorized = this.userDocument.role === 'Manager';
+            authorized = this.userDocument.role === 'Manager' || this.userDocument.role === 'Picker';
             message = authorized ? 'Authorized user for view page.' : 'Unauthorized user for view page.';
             break;
           default:

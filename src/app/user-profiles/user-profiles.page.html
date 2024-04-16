@@ -23,10 +23,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users | async" class="user-item animate__animated animate__fadeInUp">
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
-          <td [ngClass]="{'active': user.status === 'active', 'denied': user.status === 'denied', 'pending': user.status === 'pending'}">{{ user.status }}</td>
+          <td style="color: white;">{{ user.name }}</td>
+          <td style="color: white;">{{ user.email }}</td>
+          <td style="color: white;">{{ user.role }}</td>
+          <td style="color: white;" [ngClass]="{'active': user.status === 'active', 'denied': user.status === 'denied', 'pending': user.status === 'pending'}">{{ user.status }}</td>
           <td>
             <ion-button (click)="approveUser(user)" color="success" fill="outline" class="animate__animated animate__bounceIn">
               <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>

@@ -5,8 +5,24 @@ ion-toolbar{
 margin-bottom: 50px;
 margin-top: 9px;
   }
-  ion-toolbar {
-    --background: #c24d2c; 
-    color:#fff;
-    text-align: center;
+
+  .field {
+    display: flex;
+    flex-wrap: wrap;
   }
+  
+  .field label {
+    margin-right: 20px; /* Adjust spacing between labels as needed */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .field label {
+      margin-right: 10px; /* Adjust spacing for smaller screens */
+    }
+  }
+  // ion-toolbar {
+  //   --background: #c24d2c; 
+  //   color:#fff;
+  //   text-align: center;
+  // }
+  

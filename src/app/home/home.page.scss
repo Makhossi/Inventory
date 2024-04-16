@@ -44,6 +44,12 @@ ion-tabs {
   // scroll-snap-type: x mandatory; 
 }
 
+.clear-background {
+  --background: transparent;
+  border: none; /* Remove button border */
+  padding: 0; /* Remove button padding */
+}
+
 
 .container {
   flex: 0 0 auto; /* Prevent items from growing and shrinking */
