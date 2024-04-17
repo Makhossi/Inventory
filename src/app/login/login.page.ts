@@ -92,15 +92,18 @@ export class LoginPage implements OnInit {
           .signInWithEmailAndPassword(this.email, this.password)
           .then((userCredential) => {
             loader.dismiss();
+            alert('good')
             const user = userCredential.user;
             this.router.navigate(['/home']);
           })
           .catch((error) => {
             loader.dismiss();
+            alert('helo    sign')
             const errorMessage = error.message;
             if (errorMessage.includes('wrong-password')) {
               this.presentToast('Incorrect password', 'danger');
             } else {
+              alert('helo')
               this.presentToast(errorMessage, 'danger');
             }
           });
