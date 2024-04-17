@@ -45,11 +45,14 @@ ion-tabs {
 }
 
 .clear-background {
-  --background: transparent;
+  background-color:#ff0101 ;
   border: none; /* Remove button border */
-  padding: 0; /* Remove button padding */
+  padding: 0;
+   /* Remove button padding */
 }
-
+ion-toolbar{
+  --background:#9e0f0f;
+}
 
 .container {
   flex: 0 0 auto; /* Prevent items from growing and shrinking */

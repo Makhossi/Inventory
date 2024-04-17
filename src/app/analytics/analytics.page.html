@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
@@ -9,6 +9,14 @@
 
 <ion-content [fullscreen]="true">
   <div class="analytics-container">
+
+    <div class="chart-section">
+      <ion-label class="chart-title">Storeroom Inventory</ion-label>
+      <div class="chart-container" style="background-color: #b3e5fc;">
+        <canvas id="quantityByCategoryStorommChart"></canvas>
+      </div>
+    </div>
+
     <div class="chart-section">
       <ion-label class="chart-title">Store Inventory</ion-label>
       <div class="chart-container" style="background-color: #d1c4e9;">
@@ -16,12 +24,7 @@
       </div>
     </div>
     
-    <div class="chart-section">
-      <ion-label class="chart-title">Storeroom Inventory</ion-label>
-      <div class="chart-container" style="background-color: #b3e5fc;">
-        <canvas id="quantityByCategoryStorommChart"></canvas>
-      </div>
-    </div>
+
     
     <div class="chart-section">
       <ion-label class="chart-title">Total Category Comparison</ion-label>
@@ -31,14 +34,14 @@
     </div>
     
     <div class="chart-section">
-      <ion-label class="chart-title">Total Product Quantities</ion-label>
+      <ion-label class="chart-title">Total Number of Product </ion-label>
       <div class="chart-container" style="background-color: #c5cae9;">
         <canvas id="totalQuantitiesChart"></canvas>
       </div>
     </div>
     
     <div class="chart-section">
-      <ion-label class="chart-title">Best Performing Product</ion-label>
+      <ion-label class="chart-title">Product Performance</ion-label>
       <div class="chart-container" style="background-color: #ffab91;">
         <canvas id="updateFrequencyChart"></canvas>
       </div>

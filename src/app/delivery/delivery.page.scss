@@ -1,7 +1,7 @@
 ion-header {
     ion-toolbar {
-      --background: #ffffff; 
-      color:#000000;
+      --background: #000000; 
+      color:#ffffff;
       text-align: center;
       font-size: 27px;
       font-weight: bold;
@@ -99,3 +99,11 @@ ion-card-content {
   font-weight: bold;
   color: #333;
 }
+// ion-content{
+//   --background:#030101;
+// }
+
+.transparent-content {
+  --ion-background-color: transparent;
+  }
+  

@@ -23,11 +23,14 @@ ion-item {
   --background: transparent;
   --padding-start: 10px;
   --padding-end: 10px;
-  --border-radius: 10px;
+  --border-radius: 20px; /* Increased border-radius for a curved border */
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  color: white;
+  border: 1px solid white;
 }
+
 
 ion-item:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -36,6 +39,7 @@ ion-item:hover {
 ion-label {
   font-size: 16px;
   font-weight: 500;
+  color: white;
 }
 
 ion-input,
@@ -83,6 +87,7 @@ ion-button:hover {
 @media (prefers-color-scheme: dark) {
   ion-content {
     --ion-background-color: var(--ion-color-dark);
+    color: white;
   }
 
   ion-item {
@@ -92,7 +97,7 @@ ion-button:hover {
 
   ion-input,
   ion-textarea {
-    color: var(--ion-color-light);
+    color: white;
   }
 }
 
@@ -116,11 +121,13 @@ ion-button:hover {
 
   ion-label {
     font-size: 14px;
+    color: white;
   }
 
   ion-input,
   ion-textarea {
     font-size: 14px;
+    color: white;
   }
 
   .custom-file-input {
@@ -162,6 +169,10 @@ ion-datetime .datetime-text {
   }
 }
 
+.form{
+  color:#f8f5f5;
+}
+
 
 ion-header {
   ion-toolbar {
@@ -174,10 +185,12 @@ ion-header {
 .field {
   display: flex;
   flex-wrap: wrap;
+  color: white;
 }
 
 .field label {
   margin-right: 20px; /* Adjust spacing between labels as needed */
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

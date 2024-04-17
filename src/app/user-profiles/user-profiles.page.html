@@ -1,17 +1,24 @@
 
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Manage Profiles</ion-title>
+    <ion-icon style="font-size: 30px; font-weight: bolder;"  routerLink="/home" slot="start" name="arrow-back-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
 
 <ion-content [fullscreen]="true" class="ion-padding black-background">
-  <ion-segment value="custom">
+  <!-- <ion-segment value="custom">
     <ion-segment-button value="custom">
       <ion-label>Manage Profiles</ion-label>
     </ion-segment-button>
-    <!-- <ion-segment-button value="segment" routerLink="/analytics">
+     <ion-segment-button value="segment" routerLink="/analytics">
       <ion-label>Analytics </ion-label>
-    </ion-segment-button> -->
-  </ion-segment>
+    </ion-segment-button> 
+  </ion-segment> -->
 
   <div class="table-container">
-    <table>
+    <table class="styled-table">
       <thead>
         <tr>
           <th>Name</th>

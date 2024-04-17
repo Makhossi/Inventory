@@ -1,9 +1,5 @@
 
-<ion-buttons slot="start">
-  <ion-button color="dark" class="clear-background" routerLink="/login">
-    <ion-icon slot="icon-only" name="log-out"></ion-icon>
-  </ion-button>
-</ion-buttons>
+
 
 
 
@@ -98,7 +94,16 @@ height: 100%;
 
 
 <ion-content class="content" >
-
+  <!-- <ion-buttons slot="start">
+    <ion-button expand="full" color="dark" class="clear-background" routerLink="/login">
+      <ion-icon slot="icon-only" name="log-out"></ion-icon>
+    </ion-button>
+  </ion-buttons> -->
+  <ion-fab slot="fixed" color="dark" vertical="top" horizontal="start"   routerLink="/login">
+    <ion-fab-button color="dark">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <!-- Your existing ion-tabs -->
   <ion-tabs>
     <ion-tab-bar slot="bottom">

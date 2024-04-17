@@ -1,7 +1,7 @@
 
     ion-toolbar {
-      --background: #ffffff; /* Background color white */
-      color: #000000; /* Text color black */
+      --background: #0c0c0c; /* Background color white */
+      color: #fffbfb; /* Text color black */
       text-align: center;
     }
     
@@ -11,10 +11,7 @@
   }
 
  /* General Styles */
-ion-content {
-    --background: #f7f7f7;
-    --ion-font-family: 'Poppins', sans-serif;
-  }
+
   
   .bold-icon {
     font-weight: bold;

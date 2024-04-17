@@ -25,4 +25,18 @@ margin-top: 9px;
   //   color:#fff;
   //   text-align: center;
   // }
-  
+  ion-item {
+  --background: transparent;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 20px; /* Increased border-radius for a curved border */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  color: white;
+  border: 1px solid white;
+  font-weight: bold;
+}
+.transparent-content {
+  --ion-background-color: transparent;
+}

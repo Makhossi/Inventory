@@ -10,16 +10,16 @@
 
 <ion-content *ngIf="userRole !== 'Deliver'">
   <div class="container">
-    <ion-card class="card card2">
+    <!-- <ion-card class="card card2"> -->
       <ion-card-content class="form">
         <ion-item>
-          <ion-toggle labelPlacement="end" [(ngModel)]="toggleChecked">Type barcode</ion-toggle>
+          <ion-toggle labelPlacement="end"  [(ngModel)]="toggleChecked">Type barcode</ion-toggle>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Barcode</ion-label>
           <ion-input type="text" (ionChange)="searchProductByBarcode()" [(ngModel)]="barcode" placeholder="Enter barcode"></ion-input>
-          <ion-icon name="barcode-outline" slot="end" *ngIf="!toggleChecked" (click)="scanBarcode()"></ion-icon>
+          <ion-icon name="barcode-outline" color="white" slot="end" *ngIf="!toggleChecked" (click)="scanBarcode()"></ion-icon>
         </ion-item>
 
 
@@ -89,6 +89,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-card-content>
-    </ion-card>
+    <!-- </ion-card> -->
   </div>
 </ion-content>

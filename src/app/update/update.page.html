@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="transparent-content">
   <ion-grid>
     <ion-item>
       <ion-toggle labelPlacement="end" [(ngModel)]="toggleChecked">Type barcode</ion-toggle>
@@ -18,7 +18,7 @@
     <ion-item>
       <ion-label position="floating">Barcode</ion-label>
       <ion-input type="text" [(ngModel)]="barcode" *ngIf="toggleChecked"></ion-input>
-      <ion-icon name="barcode-outline" slot="end" *ngIf="!toggleChecked" (click)="scanBarcode()"></ion-icon>
+      <ion-icon name="barcode-outline" color="white" slot="end" *ngIf="!toggleChecked" (click)="scanBarcode()"></ion-icon>
     </ion-item>
 
     <ion-row>

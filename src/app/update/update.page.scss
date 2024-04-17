@@ -1,33 +1,42 @@
-ion-toolbar {
-  --background: #ffffff;
-  --color: #000000;
+ion-toolbar{
   text-align: center;
 }
-
-.header-title {
-  font-weight: bold;
-  font-size: 24px;
+.custom-file-input {
+margin-bottom: 50px;
+margin-top: 9px;
 }
 
-.back-button {
-  font-weight: bold;
+.field {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.toggle-switch {
-  --background: #007bff;
+.field label {
+  margin-right: 20px; /* Adjust spacing between labels as needed */
 }
 
-.image-button {
-  margin-top: 20px;
+@media screen and (max-width: 768px) {
+  .field label {
+    margin-right: 10px; /* Adjust spacing for smaller screens */
+  }
 }
-
-.update-button {
-  margin-top: 20px;
+// ion-toolbar {
+//   --background: #c24d2c; 
+//   color:#fff;
+//   text-align: center;
+// }
+ion-item {
+--background: transparent;
+--padding-start: 10px;
+--padding-end: 10px;
+--border-radius: 20px; /* Increased border-radius for a curved border */
+margin-bottom: 20px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease-in-out;
+color: white;
+border: 1px solid white;
+font-weight: bold;
 }
-
-ion-button {
-  --border-radius: 15px; /* Adjust the value to change the border radius */
-  --background:#3d3b3b; /* Replace 'your-color' with the desired background color */
+.transparent-content {
+--ion-background-color: transparent;
 }
-
-

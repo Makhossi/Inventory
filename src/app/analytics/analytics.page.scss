@@ -23,8 +23,9 @@ ion-content {
 
 ion-header {
   ion-toolbar {
-      --background: #524e4d;
-      color: #222121;
+        --ion-background-color: black;
+
+      color: #fff9f9;
       text-align: center;
   }
 }
@@ -57,7 +58,7 @@ ion-icon {
 .chart-title {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 

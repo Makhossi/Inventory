@@ -6,31 +6,40 @@
     <ion-title class="ion-text-center">Invoices</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
+<ion-content class="transparent-content">
   <ion-list>
-    <ion-item *ngFor="let slip of slips">
+    <ion-item  *ngFor="let slip of slips">
       <ion-card *ngFor="let item of slip.items" class="invoice-card">
         <ion-grid>
           <ion-row>
-            <ion-col size="12" size-sm="6">
+            <ion-col size="12" size-md="6">
               <ion-card-title>{{ item.name }}</ion-card-title>
+            </ion-col>
+            <ion-col size="12" size-md="6" class="ion-text-end">
+              <ion-chip color="primary">{{ item.category }}</ion-chip>
             </ion-col>
           </ion-row>
           <ion-row class="invoice-details">
             <ion-col size="12">
-              <p>Quantity: {{ item.quantity }}</p>
-              <p>Category: {{ item.category }}</p>
-              <p>Barcode: {{ item.barcode }}</p>
-              <p>Description: {{ item.description }}</p>
+              <ion-label style="font-weight: bold;">Quantity:</ion-label>
+              <p>{{ item.quantity }}</p>
+              <ion-label style="font-weight: bold;">Barcode:</ion-label>
+              <p>{{ item.barcode }}</p>
             </ion-col>
             <ion-col size="12">
-              <p>Date of Pickup: {{ item.dateOfPickup }}</p>
-              <p>Time of Pickup: {{ item.timeOfPickup }}</p>
+              <ion-label style="font-weight: bold;">Description:</ion-label>
+              <p>{{ item.description }}</p>
+            </ion-col>
+            <ion-col size="12">
+              <ion-label style="font-weight: bold;">Date of Pickup:</ion-label>
+              <p>{{ item.dateOfPickup }}</p>
+              <ion-label style="font-weight: bold;">Time of Pickup:</ion-label>
+              <p>{{ item.timeOfPickup }}</p>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-card>
+      
     </ion-item>
   </ion-list>
 </ion-content>
