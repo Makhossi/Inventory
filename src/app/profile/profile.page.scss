@@ -10,8 +10,8 @@ ion-content {
   }
   
   .profile-card {
-    --background: #c24d2c;
-    --color: #ffffff;
+    --background: #ffffff;
+    --color: #080808;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     animation: slideIn 0.5s ease-in-out;
@@ -73,10 +73,33 @@ ion-content {
     }
   }
 
+  .profile-item {
+    display: flex;
+    justify-content: space-between; /* Align items evenly */
+    margin-bottom: 10px; /* Add margin between profile items */
+  }
+  
+  .profile-info {
+    flex: 1; /* Make paragraphs expand to fill remaining space */
+    border-bottom: 1px solid #ccc; /* Add border-bottom to paragraphs */
+    padding-bottom: 5px; /* Add some padding at the bottom of paragraphs */
+    margin-right: 10px; /* Add margin to the right to separate items */
+  }
+  
+  .profile-item:last-child .profile-info {
+    border-bottom: none; /* Remove border from last profile item */
+  }
+  
+  /* Add colors to borders */
+  .profile-info {
+    border-color: #ff0000; /* Red color */
+  }
+  
+
   ion-header {
     ion-toolbar {
-      --background: #c24d2c; /* Header background color */
-      color:#fff;
+      --background: #000000; /* Header background color */
+      color:#ffffff;
     }
   }
   

@@ -113,7 +113,7 @@ export class LoginPage implements OnInit {
       } else if (userData['status'] === 'pending') {
         loader.dismiss();
         this.presentToast(
-          'Your account is pending. Please wait for admin approval.',
+          'Account pending Approval',
           'warning'
         );
         // Redirect to profile page
