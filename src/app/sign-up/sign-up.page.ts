@@ -21,73 +21,71 @@ export class SignUpPage implements OnInit {
     private db: AngularFirestore,
     private Auth: AngularFireAuth,
     private router: Router // Inject Router
-    ,private loadingController: LoadingController
+    ,private loadingController: LoadingController,
+    private toastController: ToastController 
   ) { }
 
   ngOnInit() {
   }
 
   async Register() {
-    if (this.name =='') 
-      {
-        alert("Enter your full name")
-        return;
-      }
-
-    if (this.email =='') 
-      {
-        alert("Enter email Address")
-        return;
-      }
-      if (this.password =='') 
-      {
-        alert("Enter password")
-        return;
-      }  
-  
-    if (this.password !== this.confirm_password) {
-      console.error('Passwords do not match');
+    if (!this.name || !this.email || !this.password || !this.confirm_password || !this.selectedRole) {
+      this.presentToast("Please fill in all fields");
       return;
     }
+  
+    if (this.password !== this.confirm_password) {
+      this.presentToast("Passwords do not match");
+      return;
+    }
+  
     const loader = await this.loadingController.create({
-      message: '|Registering you...',
+      message: 'Registering you...',
       cssClass: 'custom-loader-class'
     });
-   
-     
+  
     await loader.present();
+  
     this.Auth.createUserWithEmailAndPassword(this.email, this.password)
-      .then((userCredential: any) => { // Explicitly specify type
+      .then((userCredential: any) => {
         if (userCredential.user) {
-          this.db.collection('Users').add(
-            {
-              name:this.name,
-              email: this.email,
-              status: "pending",
-              role : this.selectedRole,
-            }
-          )
+          this.db.collection('Users').add({
+            name: this.name,
+            email: this.email,
+            status: "pending",
+            role: this.selectedRole,
+          })
             .then(() => {
               loader.dismiss();
-
-
               console.log('User data added successfully');
               this.router.navigate(['/profile']);
             })
-            
-            .catch((error: any) => { // Explicitly specify type
+            .catch((error: any) => {
               loader.dismiss();
-
               console.error('Error adding user data:', error);
+              this.presentToast("Error adding user data: " + error.message); // Display error message as toast
             });
         } else {
           console.error('User credential is missing');
+          this.presentToast("User credential is missing");
         }
       })
-      .catch((error: any) => { // Explicitly specify type
+      .catch((error: any) => {
+        loader.dismiss();
         console.error('Error creating user:', error);
+        this.presentToast("Error creating user: " + error.message); // Display error message as toast
       });
   }
+  
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000, // Duration in milliseconds
+      position: 'bottom' // Position of the toast
+    });
+    toast.present();
+  }
+  
   
   
 }

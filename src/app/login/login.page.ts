@@ -6,6 +6,7 @@ import { LoadingController, NavController, ToastController } from '@ionic/angula
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
