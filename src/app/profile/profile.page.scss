@@ -73,6 +73,23 @@ ion-content {
     }
   }
 
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .profile-info {
+    margin: 10px 0;
+  }
+  
+  .profile-info, .item-icon {
+    color: white;
+  }
+  
+
   .profile-item {
     display: flex;
     justify-content: space-between; /* Align items evenly */
@@ -91,9 +108,7 @@ ion-content {
   }
   
   /* Add colors to borders */
-  .profile-info {
-    border-color: #ff0000; /* Red color */
-  }
+
   
 
   ion-header {
