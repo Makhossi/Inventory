@@ -57,11 +57,13 @@ export class SignUpPage implements OnInit {
           })
             .then(() => {
               loader.dismiss();
+              alert("added")
               console.log('User data added successfully');
-              this.router.navigate(['/profile']);
+              // this.router.navigate(['/profile']);
             })
             .catch((error: any) => {
               loader.dismiss();
+              alert(error )
               console.error('Error adding user data:', error);
               this.presentToast("Error adding user data: " + error.message); // Display error message as toast
             });
@@ -72,6 +74,7 @@ export class SignUpPage implements OnInit {
       })
       .catch((error: any) => {
         loader.dismiss();
+        alert(error )
         console.error('Error creating user:', error);
         this.presentToast("Error creating user: " + error.message); // Display error message as toast
       });
