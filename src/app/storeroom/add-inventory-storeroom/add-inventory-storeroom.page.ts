@@ -25,6 +25,7 @@ export class AddInventoryStoreroomPage implements OnInit {
   pickersDetails: string = '';
   dateOfPickup: string = '';
   timeOfPickup: string = '';
+  size: any;
   barcode: string = '';
   imageBase64: any;
   imageUrl: string | null = null;
@@ -128,6 +129,7 @@ export class AddInventoryStoreroomPage implements OnInit {
         name: this.itemName,
         category: this.itemCategory,
         description: this.itemDescription,
+        size: this.size,
         imageUrl: this.imageUrl || '',
         quantity: this.itemQuantity,
         pickersDetails: this.pickersDetails,
@@ -142,7 +144,6 @@ export class AddInventoryStoreroomPage implements OnInit {
       };
       this.cart.push(newItem);
       console.log(this.cart);
-      this.presentToast('Item added to cart','success');
       await this.firestore.collection('storeroomInventory').add(newItem);
       this.clearFields();
     } catch (error) {
@@ -173,6 +174,7 @@ export class AddInventoryStoreroomPage implements OnInit {
           quantity: item.quantity,
           category: item.category,
           description: item.description,
+          size: this.size,
           imageUrl: item.imageUrl,
           pickersDetails: item.pickersDetails,
           dateOfPickup: item.dateOfPickup,
@@ -193,11 +195,11 @@ export class AddInventoryStoreroomPage implements OnInit {
 const docDefinition = {
   content: [
     {
-      text: 'BEST BRIGHT', // Adding the company name to the header
+      text: 'Best Brightness', // Company name in the header
       style: 'companyName'
     },
     {
-      text: 'Invoice',
+      text: 'Delivery Slip',
       style: 'header'
     },
     {
@@ -207,10 +209,14 @@ const docDefinition = {
     // Iterate over each item in the cart and create a simplified slip layout
     ...this.cart.flatMap((item, index) => [
       {
+        text: `Item ${index + 1}:`,
+        style: 'itemHeader'
+      },
+      {
         columns: [
           // Item details
           {
-            width: 'auto',
+            width: '*',
             text: [
               { text: 'Name: ', bold: true },
               item.name,
@@ -220,6 +226,9 @@ const docDefinition = {
               '\n',
               { text: 'Description: ', bold: true },
               item.description,
+              '\n',
+              { text: 'Size: ', bold: true },
+              item.size,
               '\n',
               { text: 'Quantity: ', bold: true },
               item.quantity.toString(),
@@ -232,10 +241,10 @@ const docDefinition = {
             ]
           }
         ],
-        margin: [0, 10] // Add some margin between each item
+        margin: [0, 5] // Add some margin between each item
       },
       // Add a separator between items, except for the last item
-      index < this.cart.length - 1 ? { canvas: [{ type: 'line', x1: 0, y1: 5, x2: 595, y2: 5, lineWidth: 1 }] } : null
+      index < this.cart.length - 1 ? { canvas: [{ type: 'line', x1: 0, y1: 5, x2: 595, y2: 5, lineWidth: 0.5 }] } : null
     ])
   ],
   styles: {
@@ -243,24 +252,29 @@ const docDefinition = {
       fontSize: 24,
       bold: true,
       margin: [0, 0, 0, 10],
-      alignment: 'center',
-      color: '#4caf50' // Green color for the header
+      color: '#41054a' // Dark purple color for the header
     },
     subheader: {
       fontSize: 14,
       bold: true,
-      margin: [0, 10, 0, 10],
-      alignment: 'center'
+      margin: [0, 10, 0, 10]
     },
-    companyName: { // Style for the company name
+    companyName: {
       fontSize: 28,
       bold: true,
       margin: [0, 0, 0, 20], // Adjust margin to separate company name from header
       alignment: 'center',
-      color: '#ff5722' // Deep orange color for the company name
+      color: '#000' // Black color for the company name
+    },
+    itemHeader: {
+      fontSize: 18,
+      bold: true,
+      margin: [0, 10, 0, 5], // Adjust margin for item headers
+      color: '#41054a' // Dark purple color for item headers
     }
   }
 };
+
 
 
 
@@ -314,6 +328,7 @@ clearFields() {
   this.itemName = '';
   this.itemCategory = '';
   this.itemDescription = '';
+  this.size = '';
   this.itemQuantity = 0;
   this.pickersDetails = '';
   this.dateOfPickup = '';

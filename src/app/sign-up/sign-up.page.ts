@@ -52,20 +52,25 @@ export class SignUpPage implements OnInit {
           this.db.collection('Users').add({
             name: this.name,
             email: this.email,
-            status: "pending",
+            status: "active",
             role: this.selectedRole,
           })
             .then(() => {
               loader.dismiss();
-              alert("added")
               console.log('User data added successfully');
+              // Clear all fields after successful registration
+              this.name = '';
+              this.email = '';
+              this.password = '';
+              this.confirm_password = '';
+              this.selectedRole = null;
+              this.presentToast("Registration successful");
               // this.router.navigate(['/profile']);
             })
             .catch((error: any) => {
               loader.dismiss();
-              alert(error )
               console.error('Error adding user data:', error);
-              this.presentToast("Error adding user data: " + error.message); // Display error message as toast
+              this.presentToast("Error adding user data: " + error.message);
             });
         } else {
           console.error('User credential is missing');
@@ -74,11 +79,11 @@ export class SignUpPage implements OnInit {
       })
       .catch((error: any) => {
         loader.dismiss();
-        alert(error )
         console.error('Error creating user:', error);
-        this.presentToast("Error creating user: " + error.message); // Display error message as toast
+        this.presentToast("Error creating user: " + error.message);
       });
   }
+  
   
   async presentToast(message: string) {
     const toast = await this.toastController.create({

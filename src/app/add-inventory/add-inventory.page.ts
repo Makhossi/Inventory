@@ -6,6 +6,11 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Observable } from 'rxjs';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FileOpener, FileOpenerOptions } from '@capacitor-community/file-opener';
+
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+const pdfMake = require('pdfmake/build/pdfmake.js');
 
 
 @Component({
@@ -31,6 +36,7 @@ export class AddInventoryPage implements OnInit {
   products: any[] = [];
   selectedProduct: any; 
   selectedProductDescription: any;
+  size:any;
   
 
 
@@ -228,6 +234,7 @@ if (!existingItemQueryStore.empty) {
         name: this.itemName,
         category: this.itemCategory,
         description: this.itemDescription,
+        size: this.size,
         imageUrl: this.imageUrl || '',
         quantity: this.itemQuantity,
         pickersDetails: this.pickersDetails,
@@ -251,12 +258,17 @@ if (!existingItemQueryStore.empty) {
   
 
   async generateSlip() {
+    if(!this.cart.length){
+
+      return
+    }
     const loader = await this.loadingController.create({
       message: 'Generating Slip...',
     });
     await loader.present();
-  
+  console.log("data",this.cart)
     try {
+  
       // Create a slip document in Firestore
       const slipData = {
         date: new Date(),
@@ -265,30 +277,154 @@ if (!existingItemQueryStore.empty) {
           quantity: item.quantity,
           category: item.category,
           description: item.description,
+          size: this.size,
           imageUrl: item.imageUrl,
           pickersDetails: item.pickersDetails,
           dateOfPickup: item.dateOfPickup,
           timeOfPickup: item.timeOfPickup,
           barcode: item.barcode,
+          // pickersDetailsEmail:this.pickersDetailsEmail,
+//pickersDetailsPhone:this.pickersDetailsPhone,
+         
         })),
       };
-      await this.firestore.collection('slips').add(slipData);
-  
-      // Clear the cart after generating the slip
-      this.cart = [];
-  
-      // Show success toast notification
-      this.presentToast('Slip generated successfully');
-    } catch (error) {
-      console.error('Error generating slip:', error);
-      // Handle error
-    } finally {
-      loader.dismiss();
+     // await this.firestore.collection('slips').add(slipData);
+      pdfMake.vfs = pdfFonts.pdfMake.vfs;
+     // Calculate column widths based on content length
+
+
+// Define PDF content
+// Define PDF content
+const docDefinition = {
+  content: [
+    {
+      text: 'Best Brightness', // Company name in the header
+      style: 'companyName'
+    },
+    {
+      text: 'Delivery Slip',
+      style: 'header'
+    },
+    {
+      text: `Date: ${new Date().toLocaleDateString()}`,
+      style: 'subheader'
+    },
+    // Iterate over each item in the cart and create a simplified slip layout
+    ...this.cart.flatMap((item, index) => [
+      {
+        text: `Item ${index + 1}:`,
+        style: 'itemHeader'
+      },
+      {
+        columns: [
+          // Item details
+          {
+            width: '*',
+            text: [
+              { text: 'Name: ', bold: true },
+              item.name,
+              '\n',
+              { text: 'Category: ', bold: true },
+              item.category,
+              '\n',
+              { text: 'Description: ', bold: true },
+              item.description,
+              '\n',
+              { text: 'Size: ', bold: true },
+              item.size,
+              '\n',
+              { text: 'Quantity: ', bold: true },
+              item.quantity.toString(),
+              '\n',
+              { text: 'Deliver\'s Details: ', bold: true },
+              item.pickersDetails,
+              '\n',
+              { text: 'Barcode: ', bold: true },
+              item.barcode,
+            ]
+          }
+        ],
+        margin: [0, 5] // Add some margin between each item
+      },
+      // Add a separator between items, except for the last item
+      index < this.cart.length - 1 ? { canvas: [{ type: 'line', x1: 0, y1: 5, x2: 595, y2: 5, lineWidth: 0.5 }] } : null
+    ])
+  ],
+  styles: {
+    header: {
+      fontSize: 24,
+      bold: true,
+      margin: [0, 0, 0, 10],
+      color: '#41054a' // Dark purple color for the header
+    },
+    subheader: {
+      fontSize: 14,
+      bold: true,
+      margin: [0, 10, 0, 10]
+    },
+    companyName: {
+      fontSize: 28,
+      bold: true,
+      margin: [0, 0, 0, 20], // Adjust margin to separate company name from header
+      alignment: 'center',
+      color: '#000' // Black color for the company name
+    },
+    itemHeader: {
+      fontSize: 18,
+      bold: true,
+      margin: [0, 10, 0, 5], // Adjust margin for item headers
+      color: '#41054a' // Dark purple color for item headers
     }
-   
-  0
-    
   }
+};
+
+
+
+
+   
+const pdfDoc =await pdfMake.createPdf(docDefinition).open();
+return
+// Generate the PDF as base64 data
+pdfDoc.getBase64(async (data:any) => {
+  // Save the PDF file locally on the device
+  try {
+    // Generate a random file name for the PDF
+  const fileName = `bestBrightness/${Date.now().toLocaleString}_storeroom.pdf.pdf`;
+
+    // Write the PDF data to the device's data directory
+   const result= await Filesystem.writeFile({
+      path: fileName,
+      data: data,
+      directory: Directory.Documents,
+      recursive:true
+    });
+   // await FileOpener.open(`${Result.uri}`,'application/pdf');
+    // Define options for opening the PDF file
+    const options: FileOpenerOptions = {
+      filePath: `${result.uri}`,
+      contentType: 'application/pdf', // Mime type of the file
+      openWithDefault: true, // Open with the default application
+    };
+
+    // Use FileOpener to open the PDF file
+
+    await FileOpener.open(options);
+    loader.dismiss();
+    this.cart=[];
+  } catch (error:any) {
+    loader.dismiss();
+    alert(error.message +"  "+error);
+    console.error('Error saving or opening PDF:', error);
+  }
+});
+
+alert('poccesing the slip...');
+} catch (error) {
+loader.dismiss();
+console.error('Error generating slip:', error);
+// Handle error
+}
+}
 
 
 
@@ -298,6 +434,7 @@ if (!existingItemQueryStore.empty) {
     this.itemName = '';
     this.itemCategory = '';
     this.itemDescription = '';
+    this.size='';
     this.itemQuantity = 0;
     this.pickersDetails = '';
     this.dateOfPickup = '';
